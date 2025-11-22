@@ -9,6 +9,9 @@ import { useState } from 'react';
 function App() {
   // Global cart state
   const [cart, setCart] = useState([]);
+  const clearCart = ()=>{
+    setCart([]);
+  }
   // Why ...cart?
   // Because React state must not be changed directly.
   // Instead of pushing, you create a new array with existing items plus the new one.
@@ -26,7 +29,7 @@ function App() {
         <Tea addToCart={addToCart}/>
         <Pastries addToCart={addToCart}/>
       </div>
-      <Cart cart={cart} removeFromCart={removeFromCart} />
+      <Cart cart={cart} removeFromCart={removeFromCart} clearCart={clearCart} />
 
     </div>
   )
