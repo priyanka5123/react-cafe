@@ -97,3 +97,30 @@ Perfect for fetching data, setting timers, and more
 [] dependency = run once on mount
 
 Dependencies trigger re-run when values change
+
+Let’s say instead of hardcoding menu items inside your Coffee component,
+you want to simulate "fetching" them from a server. we use useEffect
+useEffect(() => { ... }, [])
+🟦 Part 1: useEffect(() => { ... })
+
+This is the effect function.
+Whatever is inside the { ... } runs after the component renders.
+
+🟦 Part 2: [] (dependency array)
+
+This tells React when to run the effect.
+
+Meaning of []:
+
+✔ Run the effect only once
+✔ Run it when the component first mounts
+✔ Do NOT run again on re-renders
+setTimeout(() => { ... }, 1000)
+
+setTimeout waits 1000 milliseconds (1 second)
+before running the code inside.
+
+We use it here to simulate waiting for server data.
+
+Just like fetching from an API takes a moment,
+we simulate that delay.

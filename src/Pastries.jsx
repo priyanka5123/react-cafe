@@ -1,12 +1,21 @@
 // Pastries.js
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 function Pastries({addToCart}) {
-  const pastryItems = [
-    { name: 'Croissant', price: 3 },
-    { name: 'Muffin', price: 2.5 },
-    { name: 'Chocolate Cake', price: 4 }
-  ];
+  const [pastryItems,setPastryItems] = useState([]) ;
+  const [loading,setLoading] = useState(true);
+  useEffect(()=>{
+    setTimeout(()=>{
+        setPastryItems([
+            { name: 'Croissant', price: 3 },
+            { name: 'Muffin', price: 2.5 },
+            { name: 'Chocolate Cake', price: 4 }
+        ]);
+        setLoading(false);
+    },1000);
+  }, []);
+  
+  if (loading) return <p>Loading pastries menu...</p>;
 
   return (
     <div className="menu-category">
