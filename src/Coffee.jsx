@@ -21,16 +21,26 @@ function Coffee({addToCart}) {
 
 
   return (
-    <div className="menu-category">
-      <h3>Coffee</h3>
-      <ul>
-        {coffeeItems.map((item, index) => (
-          <li key={index}>
-            {item.name} - ${item.price.toFixed(2)}
-            <button onClick={() => addToCart(item)}>Add</button>
-          </li>
-        ))}
-      </ul>      
+    <div className="card shadow-sm mb-4">
+        <div className="card-body">
+            <h3 className="card-title text-primary">Coffee</h3>
+            <ul className="list-group">
+                {coffeeItems.map((item, index) => (
+                <li 
+                    key={index} 
+                    className="list-group-item d-flex justify-content-between align-items-center"
+                >
+                    <span>{item.name} - ${item.price.toFixed(2)}</span>
+                    <button 
+                    className="btn btn-sm btn-success"
+                    onClick={() => addToCart(item)}
+                    >
+                    Add
+                    </button>
+                </li>
+                ))}
+            </ul>
+        </div>
     </div>
   );
 }

@@ -14,20 +14,30 @@ function Pastries({addToCart}) {
         setLoading(false);
     },1000);
   }, []);
-  
+
   if (loading) return <p>Loading pastries menu...</p>;
 
   return (
-    <div className="menu-category">
-      <h3>Pastries</h3>
-      <ul>
-        {pastryItems.map((item, index) => (
-          <li key={index}>
-            {item.name} - ${item.price.toFixed(2)}
-            <button onClick={() => addToCart(item)}>Add</button>
-          </li>
-        ))}
-      </ul>
+    <div className="card shadow-sm mb-4">
+        <div className="card-body">
+            <h3 className="card-title text-primary">Pastries</h3>
+            <ul className="list-group">
+                {pastryItems.map((item, index) => (
+                <li 
+                    key={index} 
+                    className="list-group-item d-flex justify-content-between align-items-center"
+                >
+                    <span>{item.name} - ${item.price.toFixed(2)}</span>
+                    <button 
+                    className="btn btn-sm btn-success"
+                    onClick={() => addToCart(item)}
+                    >
+                    Add
+                    </button>
+                </li>
+                ))}
+            </ul>
+        </div>
     </div>
   );
 }
