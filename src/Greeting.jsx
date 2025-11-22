@@ -30,12 +30,12 @@ function Greeting({ initialName = "John Doe", customMessage = "Hello" }) {
             )}       
             <p className={styles.greeting}>
                 Welcome, {name} to the world of React
-                <ul>
-                    {users.map((user,index) =>(
-                        <li key={index}>{user}</li>
-                    ))} 
-                </ul>
             </p>
+            <ul>
+                {users.map((user,index) =>(
+                    <li key={index}>{user}</li>
+                ))} 
+            </ul>
             <button onClick={changeName}>Change Name</button>
         </div>
     );

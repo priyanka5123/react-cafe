@@ -1,28 +1,33 @@
 import './App.css'
-import Greeting from "./Greeting"
-import ClassGreeting from './ClassGreeting';
 import Coffee from './Coffee';
 import Tea from './Tea';
 import Pastries from './Pastries';
 import './MenuStyles.css'
-import MessageDisplay from './MessageDisplay';
+import Cart from './Cart';
+import { useState } from 'react';
+
 function App() {
-  // const name = "John";
-  // const greeting =<p>Hello, {name}</p>
-  const customMessage ="Welcome to my reactapp"
+  // Global cart state
+  const [cart, setCart] = useState([]);
+  // Why ...cart?
+  // Because React state must not be changed directly.
+  // Instead of pushing, you create a new array with existing items plus the new one.
+  const addToCart = (item) => setCart([...cart, item]);
+  // Here:filter creates a new array all items except the one at that index remain
+  // React re-renders with updated cart
+  const removeFromCart = (index) => {
+    setCart(cart.filter((_, i) => i !== index));
+  };
   return (
     <div>
-      {/* <h1>Hello, World</h1>
-      <h2>{greeting}</h2>
-      <Greeting />*/}
-      <MessageDisplay />
-      <Greeting customMessage={customMessage}/>
-      <ClassGreeting /> 
+      <h2>Welcome to React Café</h2>
       <div className='menu-board'>
-        <Coffee />
-        <Tea />
-        <Pastries />
+        <Coffee addToCart={addToCart}/>
+        <Tea addToCart={addToCart}/>
+        <Pastries addToCart={addToCart}/>
       </div>
+      <Cart cart={cart} removeFromCart={removeFromCart} />
+
     </div>
   )
  
