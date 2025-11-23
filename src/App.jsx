@@ -1,10 +1,11 @@
 import './App.css'
-import Coffee from './Coffee';
-import Tea from './Tea';
-import Pastries from './Pastries';
+import Coffee from './components/menu/Coffee';
+import Tea from './components/menu/Tea';
+import Pastries from './components/menu/Pastries';
 import './MenuStyles.css'
-import Cart from './Cart';
+import Cart from './components/Cart';
 import { useState } from 'react';
+import Tabs from './components/Tabs';
 
 function App() {
   // Global cart state
@@ -12,7 +13,8 @@ function App() {
   const clearCart = ()=>{
     setCart([]);
   }
-  
+  const [activeTab, setActiveTab] = useState("coffee");
+
   const addToCart = (item) => {
     setCart((prevCart) => {
       // Check if item already exists
@@ -56,24 +58,26 @@ function App() {
       <nav className="navbar navbar-dark bg-dark mb-4">
         <div className="container">
           <span className="navbar-brand mb-0 h1">☕ React Café</span>
+          <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
         </div>
       </nav>
 
       <div className="container">
-        <div className="row">
-          <div className="col-md-4">
-            <Coffee addToCart={addToCart} />
-          </div>
-          <div className="col-md-4">
-            <Tea addToCart={addToCart} />
-          </div>
-          <div className="col-md-4">
-            <Pastries addToCart={addToCart} />
-          </div>
-        </div>
+
+        {activeTab === 'coffee' && (
+          <Coffee addToCart={addToCart} />
+        )}
+
+        {activeTab === 'tea' && (
+          <Tea addToCart={addToCart} />
+        )}
+
+        {activeTab === 'pastries' && (
+          <Pastries addToCart={addToCart} />
+        )}
 
         <div className="row mt-4">
-          <div className="col-md-6 mx-auto">
+          <div className="col-md-12">
             <Cart 
               cart={cart} 
               removeFromCart={removeFromCart} 
@@ -82,6 +86,13 @@ function App() {
           </div>
         </div>
       </div>
+
+      <footer className="bg-dark text-light text-center py-3 mt-5">
+        <p className="mb-0">
+          © {new Date().getFullYear()} React Café. Made with ❤️ and Bootstrap.
+        </p>
+      </footer>
+
   </div>
   )
  
