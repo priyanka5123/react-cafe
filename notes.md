@@ -9,17 +9,18 @@ This document explains how to set up a React café app while learning about comp
 
 Install **Node.js** if you haven’t already.
 
-Create a new React app:
+Create a new React app using Vite:
 
 ```bash
-npx create-react-app react-cafe
+npm create vite@latest react-cafe -- --template react
 cd react-cafe
-npm start
+npm install
+npm run dev
 ```
 
 Your app should now be running at:
 
-👉 **[http://localhost:3000](http://localhost:3000)**
+👉 **[http://localhost:5173](http://localhost:5173)**
 
 ---
 
@@ -27,11 +28,11 @@ Your app should now be running at:
 
 React apps are built using **components**.
 
-* `App.js` → root component
+* `App.jsx` → root component
 * You can create your own components, such as:
 
   ```
-  src/Coffee.js
+  src/components/menu/Coffee.jsx
   ```
 
 Each component handles a piece of the UI, like displaying coffee or tea items.

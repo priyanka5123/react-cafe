@@ -27,11 +27,17 @@ Beginner-friendly React structure using components, props, useState, and useEffe
 
 Make sure you have Node.js installed.
 
-npx create-react-app react-cafe
+Create a new React project with Vite:
+
+```bash
+npm create vite@latest react-cafe -- --template react
 cd react-cafe
-npm start
+npm install
+npm run dev
+
+```
 
 
 The app will open at:
 
-👉 http://localhost:3000
+👉 http://localhost:5173
